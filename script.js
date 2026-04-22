@@ -15,7 +15,7 @@ function addExpense() {
 
     if (expenseRemark.trim() === "") {
         remarkError.style.display = "block";
-     
+
     } else {
         remarkError.style.display = "none";
     }
@@ -42,14 +42,18 @@ function addExpense() {
     expenseItem.className = "expense-item"
 
     const expenseDate = document.createElement("div");
-    expenseDate.className = "col-date"
+    expenseDate.className = "col-date";
+
     const todayDate = new Date();
     let date = todayDate.getDate();
     let year = todayDate.getFullYear();
     let month = todayDate.getMonth() + 1;
+
+    if (month < 10) {
+        month = "0" + month;
+    }
+
     expenseDate.innerText = date + "-" + month + "-" + year;
-
-
     const deletebtn = document.createElement("button");
     deletebtn.className = "col-action text danger";
     deletebtn.innerHTML = `<i class="bi bi-trash3"></i>`;
