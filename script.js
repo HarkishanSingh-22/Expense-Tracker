@@ -10,8 +10,7 @@ function addExpense() {
     const amountInput = document.getElementById("expense-amt");
 
     const expenseRemark = remarkInput.value;
-    const expenseAmount = Number(amountInput.value);
-
+    const expenseAmount = Number(amountInput.value.trim());
 
     if (expenseRemark.trim() === "") {
         remarkError.style.display = "block";
@@ -54,6 +53,9 @@ function addExpense() {
     }
 
     expenseDate.innerText = date + "-" + month + "-" + year;
+
+
+
     const deletebtn = document.createElement("button");
     deletebtn.className = "col-action text danger";
     deletebtn.innerHTML = `<i class="bi bi-trash3"></i>`;
@@ -72,9 +74,10 @@ function addExpense() {
 
     expenseList.appendChild(expenseItem);
     expenseItem.appendChild(deletebtn);
-    console.log(typeof (expenseAmount))
+
     totalAmount += expenseAmount;
     totalExpense.innerHTML = totalAmount;
+
     remarkInput.value = "";
     amountInput.value = "";
 
